@@ -45,6 +45,8 @@ const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 
 
+
+
 //star background
 const cubeTextureLoader = new THREE.CubeTextureLoader();
 scene.background = cubeTextureLoader.load([
@@ -59,12 +61,14 @@ scene.background = cubeTextureLoader.load([
 
 //Texture of planets creation
 const textureLoader = new THREE.TextureLoader();
+const pointLight = new THREE.PointLight(0xFFFFFF, 20000, 300);
+scene.add(pointLight);
 
 
 
 //create sun structure
 const sunGeo = new THREE.SphereGeometry(30,30,30);
-const sunMat = new THREE.MeshStandardMaterial({
+const sunMat = new THREE.MeshBasicMaterial({
     map: textureLoader.load(sunTexture)
 });
 const sun = new THREE.Mesh(sunGeo,sunMat);
@@ -91,7 +95,7 @@ if(ring) {
 const ringMesh = new THREE.Mesh(ringGeo,ringMat);
 obj.add(ringMesh);
 ringMesh.position.x = position;
-ringMesh.rotation.x = -0.5 * Math.PI;
+ringMesh.rotation.x = -0.57* Math.PI;
 }
 
 scene.add(obj);
@@ -110,11 +114,7 @@ const saturn = createPlanets(12, saturnTexture, 155,{
     outerRadius: 28,  
     texture: saturnRingTexture
 });
-const uranus = createPlanets(7, uranusTexture, 196,{
-    innerRadius: 7,
-    outerRadius: 12,
-    Texture: uranusRingTexture
-});
+const uranus = createPlanets(7, uranusTexture, 196);
 const neptune =  createPlanets(7, neptuneTexture , 230);
 
 
