@@ -3,6 +3,18 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import *  as dat from 'dat.gui';
 
 //images
+import starsTexture from './img/stars.jpg';
+import sunTexture from './img/sun.jpg';
+import mercuryTexture from './img/mercury.jpg';
+import venusTexture from './img/venus.jpg';
+import earthTexture from './img/earth.jpg';
+import marsTexture from './img/mars.jpg';
+import jupiterTexture from './img/jupiter.jpg';
+import saturnTexture from './img/saturn.jpg';
+import saturnRingTexture from './img/saturn ring.png';
+import uranusTexture from './img/uranus.jpg';
+import uranusRingTexture from './img/uranus ring.png';
+import neptuneTexture from './img/neptune.jpg';
 
 
 
@@ -34,24 +46,36 @@ scene.add(ambientLight);
 
 
 //star background
-renderer.setClearColor(0x000010);
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+scene.background = cubeTextureLoader.load([
+    starsTexture,
+    starsTexture,
+    starsTexture,
+    starsTexture,
+    starsTexture,
+    starsTexture
+]);
+
+
+//Texture of planets creation
+const textureLoader = new THREE.TextureLoader();
 
 
 
 //create sun structure
-const sunGeo = new THREE.SphereGeometry(16,30,30);
-const sunMat = new THREE.MeshBasicMaterial({
-    color : 0xFFFF00
+const sunGeo = new THREE.SphereGeometry(30,30,30);
+const sunMat = new THREE.MeshStandardMaterial({
+    map: textureLoader.load(sunTexture)
 });
 const sun = new THREE.Mesh(sunGeo,sunMat);
 scene.add(sun);
 
 
 //create planet structure
-function createPlanets(size, colors, position, ring){
+function createPlanets(size, texture, position, ring){
 const geo = new THREE.SphereGeometry(size,30,30);
-const mat = new THREE.MeshBasicMaterial({
-    color : colors
+const mat = new THREE.MeshStandardMaterial({
+    map: textureLoader.load(texture)
 });
 const mesh = new THREE.Mesh(geo,mat);
 const obj= new THREE.Object3D();
@@ -59,10 +83,11 @@ obj.add(mesh);
 
 if(ring) {
     const ringGeo = new THREE.RingGeometry(ring.innerRadius, ring.outerRadius,32);
-    const ringMat = new THREE.MeshBasicMaterial({
-    color : ring.color,
+    const ringMat = new THREE.MeshStandardMaterial({
+    map: textureLoader.load(ring.texture),
     side: THREE.DoubleSide
 });
+
 const ringMesh = new THREE.Mesh(ringGeo,ringMat);
 obj.add(ringMesh);
 ringMesh.position.x = position;
@@ -75,25 +100,24 @@ mesh.position.x = position;
 return {mesh, obj};
 }
 
-const mercury =  createPlanets(3.2, 0xFDDA0D, 28);
-const venus =  createPlanets(5.8, 0xFAD5A5, 44);
-const earth =  createPlanets(6, 0x93C572, 62);
-const mars =  createPlanets(4, 0xFF5733 , 78);
-const jupiter =  createPlanets(12, 0xF3E5AB , 100);
-const saturn = createPlanets(14, 0xE49B0F, 138,{
-    innerRadius: 20,
-    outerRadius: 30,
-    color: 0xE49B0A
+const mercury =  createPlanets(3.2, mercuryTexture, 38);
+const venus =  createPlanets(5.8, venusTexture, 47);
+const earth =  createPlanets(6, earthTexture, 69);
+const mars =  createPlanets(4, marsTexture , 87);
+const jupiter =  createPlanets(16, jupiterTexture , 110);
+const saturn = createPlanets(12, saturnTexture, 155,{
+    innerRadius: 18,
+    outerRadius: 28,  
+    texture: saturnRingTexture
 });
-const uranus = createPlanets(7, 0x8db3ca, 176,{
+const uranus = createPlanets(7, uranusTexture, 196,{
     innerRadius: 7,
     outerRadius: 12,
-    color: 0xFFF8DC
+    Texture: uranusRingTexture
 });
-const neptune =  createPlanets(7, 0x33b3ff , 200);
+const neptune =  createPlanets(7, neptuneTexture , 230);
 
 
-//saturn ring
 
 
 //animation
