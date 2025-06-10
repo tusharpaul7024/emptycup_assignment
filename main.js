@@ -43,7 +43,8 @@ orbit.update();
 //light
 const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
-
+const sunLight = new THREE.PointLight(0xFFFFFF, 20000, 300);
+scene.add(sunLight);
 
 
 
@@ -61,8 +62,6 @@ scene.background = cubeTextureLoader.load([
 
 //Texture of planets creation
 const textureLoader = new THREE.TextureLoader();
-const pointLight = new THREE.PointLight(0xFFFFFF, 20000, 300);
-scene.add(pointLight);
 
 
 
@@ -118,11 +117,29 @@ const uranus = createPlanets(7, uranusTexture, 196);
 const neptune =  createPlanets(7, neptuneTexture , 230);
 
 
+const clock =  new THREE.Clock();
+
+
+
+//pause and resume animation button
+let isPlaying = true;
+document.getElementById('pauseResumeButton').addEventListener('click', pauseResumeAnimation);
+function pauseResumeAnimation() {
+        isPlaying = !isPlaying;
+}
+
+
+
+
 
 
 //animation
 function animate() {
-    sun.rotateY(0.004);
+if(isPlaying){
+    const deltaTime = clock.getDelta();
+
+
+    sun.rotation.y += 0.05 * deltaTime;
 
     //self rotation
     mercury.mesh.rotateY(0.004);
@@ -146,7 +163,9 @@ function animate() {
 
 
 
-    renderer.render(scene, camera);
+    
+}
+renderer.render(scene, camera);
 }
 
 
