@@ -76,14 +76,14 @@ const controlPanel = document.getElementById('control-panel');
 
 //planets Data 
 const planetData = [
-    {name: 'Mercury', size: 3.2, texture: mercuryTexture, position: 38, axialSpeed: 0.005, orbitalSpeed: 0.048},
-    {name: 'Venus', size: 5.8, texture: venusTexture, position: 47, axialSpeed: 0.003, orbitalSpeed: 0.035},
-    {name: 'Earth', size: 6, texture: earthTexture, position: 69, axialSpeed: 0.01, orbitalSpeed: 0.03},
-    {name: 'Mars', size: 4, texture: marsTexture, position: 87, axialSpeed: 0.009, orbitalSpeed: 0.024},
-    {name: 'Jupiter', size: 16, texture: jupiterTexture, position: 110, axialSpeed: 0.02, orbitalSpeed: 0.013},
-    {name: 'Saturn', size: 12, texture: saturnTexture, position: 155, axialSpeed: 0.018, orbitalSpeed: 0.009, ring:{innerRadius: 18, outerRadius: 28, texture: saturnRingTexture}},
-    {name: 'Uranus', size: 7, texture: uranusTexture, position: 196, axialSpeed:0.007, orbitalSpeed: 0.007, ring:{innerRadius: 9, outerRadius: 10, texture: uranusRingTexture}},
-    {name: 'Neptune', size: 7, texture: neptuneTexture, position: 230, axialSpeed:0.006, orbitalSpeed: 0.005},
+    {name: 'Mercury', size: 3.2, texture: mercuryTexture, position: 40, axialSpeed: 0.005, orbitalSpeed: 0.048},
+    {name: 'Venus', size: 5.8, texture: venusTexture, position: 55, axialSpeed: 0.003, orbitalSpeed: 0.035},
+    {name: 'Earth', size: 6, texture: earthTexture, position: 74, axialSpeed: 0.01, orbitalSpeed: 0.03},
+    {name: 'Mars', size: 4, texture: marsTexture, position: 91, axialSpeed: 0.009, orbitalSpeed: 0.024},
+    {name: 'Jupiter', size: 16, texture: jupiterTexture, position: 116, axialSpeed: 0.02, orbitalSpeed: 0.013},
+    {name: 'Saturn', size: 12, texture: saturnTexture, position: 165, axialSpeed: 0.018, orbitalSpeed: 0.009, ring:{innerRadius: 18, outerRadius: 28, texture: saturnRingTexture}},
+    {name: 'Uranus', size: 7, texture: uranusTexture, position: 213, axialSpeed:0.007, orbitalSpeed: 0.007, ring:{innerRadius: 9, outerRadius: 10, texture: uranusRingTexture}},
+    {name: 'Neptune', size: 7, texture: neptuneTexture, position: 242, axialSpeed:0.006, orbitalSpeed: 0.005},
     
 ];
 
@@ -142,7 +142,7 @@ planetData.forEach(data =>{
         const planetControlDiv = document.createElement('div');
         planetControlDiv.className = 'planet-control';
         planetControlDiv.innerHTML = `
-                        <label for="${data.name.toLowerCase()}-speed">${data.name}:</label>
+                        <label for="${data.name.toLowerCase()}-speed">${data.name} :</label>
                         <input type="range" id="${data.name.toLowerCase()}-speed" min="0" max="10" step="1" value="1">
                         <span class="speed-value" id="${data.name.toLowerCase()}-speed-value"> 1 </span>
                     `;
@@ -168,7 +168,7 @@ const clock =  new THREE.Clock();
  
 //pause and resume animation button
 let isPlaying = true;
-document.getElementById('pauseResumeButton').addEventListener('click', pauseResumeAnimation);
+document.getElementById('pause-resume-button').addEventListener('click', pauseResumeAnimation);
 function pauseResumeAnimation() {
         isPlaying = !isPlaying;
 }
