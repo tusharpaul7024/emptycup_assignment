@@ -4,8 +4,11 @@ A captivating web-based 3D solar system visualization built with Vite and Three.
 [Link](https://solar-system-ulth.onrender.com)
 
 ## Table of Content
-[Feature](#feature)
-[Technologies](#technologies)
+- [Feature](#feature)
+- [Technologies](#technologies)
+- [Installation and Setup](#installationandsetup)
+- [Usage](#usage)
+- [Screenshot](#screenshot)
 
 ## Feature
 - Dynamic Solar System: Experience a realistic representation of our solar system, with the Sun and all eight planets.
@@ -47,4 +50,7 @@ To run this project locally, follow these steps:
   - Right-Click and Drag: Pan the camera.
 - Planet Speed Sliders: Located in the control panel, adjust the slider for each planet to change its orbital speed.
 - Pause/Resume Button: Click the "Pause/Resume Animation" button to toggle the animation state.
+## Screenshots
+![image](https://github.com/user-attachments/assets/bbebdbd2-312a-4496-b96e-34a8b498a989)
+
     
