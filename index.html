@@ -5,17 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Three.js assignment</title>
-    <style>
-        body{
-            margin: 0;
-        }
-        </style>
+     <link rel="stylesheet" href="styles.css"> <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-    <div id="controls">
-        <button id="pauseResumeButton">Pause/Resume</button>
+
+        <div id="solar-system-container">
+        <div id="control-panel">
+            
+            <h2 class="text-xl font-bold mb-4 text-center text-blue-400">Orbital Speed Controls</h2>
+            <button id="pauseResumeButton">Pause/Resume</button>
+            <!-- Sliders will be injected here by JavaScript -->
+        </div>
         
+        <canvas id="solar-system-canvas"></canvas>
     </div>
+
+
+   
     <script src="/main.js" type="module"></script>
     
 </body>
