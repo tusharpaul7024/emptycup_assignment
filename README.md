@@ -4,8 +4,8 @@ A captivating web-based 3D solar system visualization built with Vite and Three.
 [Link](https://solar-system-ulth.onrender.com)
 
 ## Table of Content
--[Feature](#feature)
--[Technologies](#technologies)
+[Feature](#feature)
+[Technologies](#technologies)
 
 ## Feature
 - Dynamic Solar System: Experience a realistic representation of our solar system, with the Sun and all eight planets.
