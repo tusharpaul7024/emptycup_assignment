@@ -116,6 +116,17 @@ ringMesh.position.x = position;
 ringMesh.rotation.x = -0.57* Math.PI;
 }
 
+
+   
+  //orbit line creation 
+  const orbitGeo = new THREE.TorusGeometry(position, 0.1, 3, 64);
+  const orbitMat = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.1 });
+  const orbitLine = new THREE.Mesh(orbitGeo, orbitMat);
+  orbitLine.rotation.x = Math.PI / 2;
+  scene.add(orbitLine);
+
+
+
 scene.add(obj);
 mesh.position.x = position;
 return {mesh, obj};

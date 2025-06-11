@@ -2,10 +2,8 @@
             margin: 0;
             overflow: hidden; 
             font-family: 'Inter', sans-serif;
-            
             color: #fff; 
             display: flex;
-          
             height: 100vh;
         }
 
