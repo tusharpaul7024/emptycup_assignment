@@ -38,11 +38,22 @@ camera.position.set(-90,140,140);
 orbit.update();
 
 
+
 //light
 const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 const sunLight = new THREE.PointLight(0xFFFFFF, 20000, 300);
 scene.add(sunLight);
+
+
+//pause and resume animation button
+let isPlaying = true;
+
+document.getElementById('pause-resume-button').addEventListener('click', pauseResumeAnimation);
+function pauseResumeAnimation() {
+        isPlaying = !isPlaying;
+}
+
 
 
 
@@ -172,13 +183,8 @@ planetData.forEach(data =>{
         });
 
 const clock =  new THREE.Clock();
- 
-//pause and resume animation button
-let isPlaying = true;
-document.getElementById('pause-resume-button').addEventListener('click', pauseResumeAnimation);
-function pauseResumeAnimation() {
-        isPlaying = !isPlaying;
-}
+
+
 
 //animation
 function animate() {
@@ -193,7 +199,8 @@ if(isPlaying){
         planet.obj.rotation.y += (planet.orbitalSpeed * deltaTime * 10) * planet.speedMultiplier; //orbit rotation
 
     });    
-}       
+}    
+
 renderer.render(scene, camera);
 }
 
